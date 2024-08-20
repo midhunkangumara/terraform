@@ -128,7 +128,7 @@ Terraform is powerful yet straightforward, designed with automation and scalabil
 
 
 
-## 🚀 Stage 2: Terraform Basics
+## 🚀  Terraform Basics
 
 
 
@@ -178,7 +178,7 @@ I used these commands to deploy my first AWS EC2 instance, and it was great to s
 
 
 
-## 🔧 Stage 3: Terraform Configuration and Providers
+## Terraform Configuration and Providers
 
 
 
@@ -222,7 +222,7 @@ Providers in Terraform let you manage resources across different platforms, like
 
     Outputs: Capture key information after Terraform runs, like an instance’s IP address.
 
-🌍 Stage 4: Terraform State and Remote State
+## 🌍 Terraform State and Remote State
 Introduction:
 
 This stage focuses on understanding Terraform state and how to manage it effectively. Terraform state is crucial for keeping track of your infrastructure.
@@ -254,7 +254,7 @@ terraform {
 
 }
 
-🔄 Stage 5: Terraform Modules
+## 🔄 Terraform Modules
 Introduction:
 
 In this stage, I’ve discovered Terraform modules, which are game-changers for organizing and reusing infrastructure configurations.
