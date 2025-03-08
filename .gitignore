@@ -1,0 +1,25 @@
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+terraform.tfstate.d/
+
+# Ignore crash logs
+crash.log
+crash.*.log
+
+# Ignore Terraform plan output files
+*.tfplan
+
+# Ignore sensitive Terraform variable files
+?*.tfvars
+*.tfvars.json
+!example.tfvars  # Allow an example tfvars file
+
+# Ignore provider-specific files
+.terraform/
+.terraform.lock.hcl
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
