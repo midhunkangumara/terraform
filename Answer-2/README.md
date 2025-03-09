@@ -66,3 +66,48 @@ Confirm the destroy process by typing `yes` when prompted.
 ---
 This guide provides a step-by-step process to deploy infrastructure using Terraform and manage SSH keys securely via AWS SSM.
 
+#Steps to verify the setup.
+### 1️⃣ Access the Ubuntu Server via ALB  
+Use the **ALB DNS name** from the Terraform output to access the Ubuntu server on **port 80**.
+
+### 2️⃣ Retrieve and Access the Jump Server  
+1. Retrieve the **Jump Server key** using AWS CLI:  
+   ```sh
+   aws ssm get-parameter --name "<jump_server_key_ssm_arn>" --region us-east-1 --with-decryption --query "Parameter.Value" --output text > jump_server_key.pem
+   ```
+2. Update file permissions:  
+   ```sh
+   chmod 400 jump_server_key.pem
+   ```
+3. SSH into the Jump Server:  
+   ```sh
+   ssh -i jump_server_key.pem ubuntu@<jump_host_public_ip>
+   ```
+
+### 3️⃣ Retrieve and Access the Ubuntu Server  
+1. Retrieve the **Ubuntu Server key** inside the Jump Server:  
+   ```sh
+   aws ssm get-parameter --name "<ubuntu_server_key_ssm_arn>" --region us-east-1 --with-decryption --query "Parameter.Value" --output text > /home/ubuntu/ubuntu_server_key.pem
+   ```
+2. Update file permissions:  
+   ```sh
+   chmod 400 /home/ubuntu/ubuntu_server_key.pem
+   ```
+3. SSH into the Ubuntu Server from the Jump Server:  
+   ```sh
+   ssh -i /home/ubuntu/ubuntu_server_key.pem ubuntu@<ubuntu_server_private_ip>
+   ```
+
+### 4️⃣ Retrieve Required Values from Terraform Output  
+Ensure you fetch the necessary values from the Terraform output:  
+- **Jump Server Key ARN:** `jump_server_key_ssm_arn`  
+- **Jump Server Public IP:** `jump_host_public_ip`  
+- **Ubuntu Server Key ARN:** `ubuntu_server_key_ssm_arn`  
+- **Ubuntu Server Private IP:** `ubuntu_server_private_ip`  
+
+Run the following Terraform command to get the output values:  
+```sh
+terraform output
+```
+
+
