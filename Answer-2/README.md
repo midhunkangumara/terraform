@@ -84,7 +84,7 @@ Use the **ALB DNS name** from the Terraform output to access the Ubuntu server o
    ssh -i jump_server_key.pem ubuntu@<jump_host_public_ip>
    ```
 
-### 3️⃣ Retrieve and Access the Ubuntu Server  
+### 3️⃣ use /home/ubuntu/ubuntu_server_key.pem or  Retrieve and Access the Ubuntu Server  
 1. Retrieve the **Ubuntu Server key** inside the Jump Server:  
    ```sh
    aws ssm get-parameter --name "<ubuntu_server_key_ssm_arn>" --region us-east-1 --with-decryption --query "Parameter.Value" --output text > /home/ubuntu/ubuntu_server_key.pem
