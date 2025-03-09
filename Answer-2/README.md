@@ -68,7 +68,7 @@ This guide provides a step-by-step process to deploy infrastructure using Terraf
 
 #Steps to verify the setup.
 ### 1️⃣ Access the Ubuntu Server via ALB  
-Use the **ALB DNS name** from the Terraform output to access the Ubuntu server on **port 80**.
+Use the **ALB DNS name** (alb_dns_name) from the Terraform output to access the Ubuntu server on **port 80**.
 
 ### 2️⃣ Retrieve and Access the Jump Server  
 1. Retrieve the **Jump Server key** using AWS CLI:  
